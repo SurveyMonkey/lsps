@@ -1,0 +1,31 @@
+{
+  "name": "surveymonkey-lsps",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#harness/*": "./harness/*",
+    "#lib/*": "./lib/*",
+    "#lsp-merge/*": "./plugins/lsp-merge/src/*"
+  },
+  "description": "Dev and CI toolchain for the lsps marketplace. Not a shipped package and not a dependency of any plugin: a plugin never carries a package.json (ADR 001).",
+  "packageManager": "pnpm@10.34.5",
+  "engines": {
+    "node": ">=22.18.0 <23"
+  },
+  "scripts": {
+    "test": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.13",
+    "@types/node": "22.20.2",
+    "@vitest/coverage-v8": "4.1.11",
+    "lefthook": "2.1.12",
+    "typescript": "7.0.2",
+    "vitest": "4.1.11"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "lefthook"
+    ]
+  }
+}
