@@ -1,11 +1,11 @@
 ---
 type: RFC
 description: Moves the three Claude Code language server plugins (lsp-merge, typescript7-lsp, biome-lsp) out of the marketplaces that carry them today, among them SurveyMonkey/skills and sm-incubator/org-claude, into this repository, as one public marketplace named `lsps`, with the TypeScript toolchain those plugins were built against.
-status: draft
+status: stable
 created: 2026-10-08
 owner: brianespinosa
-related_milestones: []
-related_adrs: []
+related_milestones: [1]
+related_adrs: [1]
 ---
 
 # RFC 001: One marketplace for the language server plugins
@@ -156,12 +156,12 @@ floor with no build step, one root `lib/` symlinked into each plugin, tests only
 Each phase is a pull request, or one per repository. Phase order matters.
 
 1. **Scaffold this repository.** Toolchain, `lib/`, `harness/`, `tests/lib`, `tests/harness`,
-   `tests/repo`, rules, `CLAUDE.md`, `README.md`, `CONTRIBUTING.md`, LICENSE, the marketplace
-   manifest with no entries, this RFC and ADR 001. `pnpm test` passes with the `lib/` and
-   `harness/` tests.
-2. **Move the plugins.** The three plugins, `tests/plugins/lsp-merge`, ADR 002, the three
-   marketplace entries, `.claude/settings.json` and `.claude/lsp-merge.json`. `claude plugin
-   validate --strict` passes on the manifest and each plugin. `pnpm test` at 100 percent.
+   rules, `CLAUDE.md`, `README.md`, `CONTRIBUTING.md`, LICENSE, this RFC and ADR 001. `pnpm
+   test` passes with the `lib/` and `harness/` tests.
+2. **Move the plugins.** The three plugins, `tests/plugins/lsp-merge`, `tests/repo`, ADR 002,
+   the marketplace manifest with its three entries, the `plugin-validate` workflow,
+   `.claude/settings.json` and `.claude/lsp-merge.json`. `claude plugin validate --strict`
+   passes on the manifest and each plugin. `pnpm test` at 100 percent.
 3. **Carry the open plugin issues here.** Issues cannot transfer across owners, so each open
    issue on the three plugins is recreated here with its body, and closed at its source with
    a link forward.
@@ -198,6 +198,12 @@ Phases 4 and 5 run after 6 when the private window matters more than the order.
 - The typescript7-lsp and biome-lsp future question moves here unchanged. No deprecation in
   the move.
 - Plain copy with source SHAs, no history rewrite.
+- ~~The marketplace manifest, with no entries, ships in phase 1.~~ **Revised in phase 1** (#12):
+  `claude plugin validate --strict` refuses a manifest with zero plugins, and the validate
+  workflow refuses an empty `plugins/` by design. Both ship in phase 2 with the first plugin,
+  so each merge keeps CI green. The repository layout test moves for the same reason.
+- CodeQL ships in phase 6. Code scanning needs Advanced Security, which this private
+  repository does not have and a public one gets free.
 - Follow-up: one `lib/` for every marketplace (a later RFC).
 
 ## Related

@@ -15,9 +15,10 @@
 | `pnpm exec biome ci . --error-on-warnings` | Lint and format of `.ts` and `.json`. |
 | `claude plugin validate --strict <dir>` | The marketplace manifest, and each plugin directory. |
 
-The pre-commit hook runs the staged-only subset. CI runs everything (`ci.yml`,
-`plugin-validate.yml`). The job names `vitest`, `vitest-floor`, `types`, `biome` and
-`plugin-validate` are the required checks on `main`, matched by exact string. Do not rename one.
+The pre-commit hook runs the staged-only subset. CI runs everything (`ci.yml`, and
+`plugin-validate.yml` from the first plugin on). The job names `vitest`, `vitest-floor`, `types`,
+`biome` and `plugin-validate` are the required checks on `main`, matched by exact string. Do not
+rename one.
 
 ## Layout
 
@@ -28,6 +29,11 @@ The pre-commit hook runs the staged-only subset. CI runs everything (`ci.yml`,
 - `harness/` is the shared test harness. It never ships.
 - `docs/adr/` and `docs/rfc/` hold the records. `.claude/rules/` holds the rules that apply to
   each path.
+
+## Worktrees
+
+Issue work goes in a worktree at `.claude/worktrees/<branch>/`, which `.gitignore` covers. Run
+`pnpm install` inside it; worktrees do not share `node_modules`.
 
 ## Pull requests
 

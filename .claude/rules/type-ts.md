@@ -90,11 +90,8 @@ A hook takes the other half. It runs on every tool call in a session. So it asks
   parts share one copy of each helper.
 - A process a command runs is an injected `Runner` (`lib/process.ts`). A test passes a fake
   that answers from a table, and a call the test did not expect fails.
-- One exception, at the level of a contract test: the hook tests' rig puts a `gh` that always
-  fails first on `PATH`. The hook checks only that `gh` is there, and a spawned run never reaches
-  GitHub. The stand-in answers nothing. Answers still come only from `createGhMock`.
-- git is not mocked. `harness/git.ts` builds real temporary repositories, with real local bare
-  origins. So fetch, merge, ancestry, and worktree operations behave as they do in production.
+- A language server is not mocked at the protocol level. A test starts a real fake child
+  server over stdio, and asserts what reaches the client.
 - No call-count, call-order, or request-log assertions. Assert the verdict the command reached,
   and the effect it had. If you count calls instead, that pins an implementation detail, and it
   turns a refactor red.
