@@ -19,7 +19,7 @@ land three times, under three install ids, and the three copies have already dri
 carries a `homepage`, one a different `enabledPlugins` example. `lsp-merge` and `biome-lsp`
 exist only in the source marketplace, so a SurveyMonkey repository that wants merged
 diagnostics must trust a personal source. This RFC proposes one public marketplace, `lsps`, in
-`SurveyMonkey/lsps` (today `SurveyMonkey/lsp`), that holds every language server plugin, and
+`SurveyMonkey/lsps`, that holds every language server plugin, and
 that the three marketplaces that carry copies drop them.
 
 ## Motivation
@@ -68,10 +68,10 @@ Non-goals:
 ### Marketplace
 
 `.claude-plugin/marketplace.json` with `name: "lsps"`, the same convention as `skills`
-(marketplace name equals repository name, plural). The repository is `SurveyMonkey/lsp` today
-and is renamed to `lsps` during the rollout. The marketplace name is fixed from the first
-commit, because it is the `@` suffix in every `enabledPlugins` key and cannot change later. A
-repository rename is a settings-string change in each consumer; GitHub redirects the old URL.
+(marketplace name equals repository name, plural). The repository was created as `lsp` and
+renamed to `lsps` on 2026-10-08, before any plugin landed. The marketplace name is fixed from
+the first commit, because it is the `@` suffix in every `enabledPlugins` key and cannot change
+later.
 Three relative-path entries. Owner is SurveyMonkey Engineering, as in `skills`. Each plugin's
 `plugin.json` gains a `homepage` under this repository. LICENSE files keep the author line they
 carry today.
@@ -175,8 +175,7 @@ Each phase is a pull request, or one per repository. Phase order matters.
    lsp-merge design record stays, deprecated, with a link here. Its settings register `lsps`
    and enable `lsp-merge@lsps`. Its `.claude/lsp-merge.json` stays; it is project config.
    This work is tracked in that repository.
-6. **Rename the repository to `lsps`, make it public, add rulesets.** Update the
-   `extraKnownMarketplaces` repo string in every consumer in the same step. Protect `main`,
+6. **Make the repository public, add rulesets.** Protect `main`,
    require `vitest`, `vitest-floor`, `types`, `biome` and `plugin-validate` after each has
    reported on `main` once.
 
@@ -193,7 +192,8 @@ Phases 4 and 5 run after 6 when the private window matters more than the order.
 ## Decisions & Follow-ups
 
 - Marketplace name `lsps`, after the `skills` convention (name equals repository, plural).
-  The repository is renamed from `lsp` to `lsps` in phase 6; the marketplace name never changes.
+  The repository was renamed from `lsp` to `lsps` before phase 1; the marketplace name never
+  changes.
 - LICENSE author line stays as shipped today.
 - The typescript7-lsp and biome-lsp future question moves here unchanged. No deprecation in
   the move.
