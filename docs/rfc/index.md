@@ -6,4 +6,4 @@ okf_version: "0.2"
 
 | Doc | Description |
 |-----|-------------|
-| [001-lsp-marketplace.md](001-lsp-marketplace.md) | Moves the three Claude Code language server plugins out of `bje-settings/claude`, `SurveyMonkey/skills` and `sm-incubator/org-claude` into this repository, as one public marketplace named `lsps`, with the TypeScript toolchain those plugins were built against. |
+| [001-lsp-marketplace.md](001-lsp-marketplace.md) | Moves the three Claude Code language server plugins out of the marketplaces that carry them today, among them `SurveyMonkey/skills` and `sm-incubator/org-claude`, into this repository, as one public marketplace named `lsps`, with the TypeScript toolchain those plugins were built against. |
