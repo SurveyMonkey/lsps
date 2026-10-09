@@ -1,0 +1,52 @@
+{
+  // The type-check gate's whole configuration (ADR 001). Nothing here emits:
+  // the file a reviewer reads on the default branch is the file node runs,
+  // so `tsc` is a checker and never a build step.
+  "compilerOptions": {
+    // Node 22.18 is the runtime floor, so the language level is what that
+    // release supports rather than the newest the compiler knows.
+    "target": "es2023",
+    "lib": ["es2023"],
+    // nodenext on both, with explicit `.ts` on every import. That is what
+    // node's own resolver reads when it strips the types. Any other pairing
+    // would let `tsc` accept an import node refuses at launch.
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true,
+    // The containment ADR 001 names: `enum`, parameter properties, and
+    // namespaces have runtime meaning. So node rejects them with
+    // ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX at launch. This turns that into a
+    // failed gate on a pull request instead.
+    "erasableSyntaxOnly": true,
+    "noEmit": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    // Only node's own types. Every plugin's shipped TypeScript reaches
+    // outside its own tree only through the root lib (ADR 001). Anything else in scope here would be a type that no shipped
+    // file may reach for.
+    "types": ["node"]
+  },
+  // The gate's inputs are named here. The `types` job in
+  // `.github/workflows/ci.yml` discovers them the same way. That job
+  // refuses a run that finds no tracked `.ts` file under them. `tsc` with
+  // no inputs is an error, but a shrinking include set is the quieter
+  // failure this repository refuses everywhere.
+  //
+  // plugins/*/src, plugins/*/scripts and plugins/*/hooks are named before
+  // any plugin exists, so a plugin's pull request does not edit this file.
+  // A plugin's entry point lives in `scripts/`, outside `src/`. claude.ai
+  // rejects a plugin that carries a top-level `bin/`.
+  "include": [
+    "tests",
+    "harness",
+    "lib",
+    "plugins/*/src",
+    "plugins/*/scripts",
+    "plugins/*/hooks",
+    "vitest.config.ts"
+  ]
+}

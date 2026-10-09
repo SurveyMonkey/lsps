@@ -9,3 +9,6 @@ CLAUDE.local.md
 
 # node toolchain
 node_modules/
+
+# worktrees of this repository (CONTRIBUTING.md)
+.claude/worktrees/
