@@ -1,0 +1,14 @@
+{
+  "extraKnownMarketplaces": {
+    "lsps": {
+      "source": {
+        "source": "github",
+        "repo": "SurveyMonkey/lsps"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "lsp-merge@lsps": true,
+    "typescript-lsp@claude-plugins-official": false
+  }
+}

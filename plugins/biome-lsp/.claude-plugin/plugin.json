@@ -1,0 +1,12 @@
+{
+  "name": "biome-lsp",
+  "description": "Biome's language server (biome lsp-proxy) from the project's own Biome. Gives Biome's lint diagnostics for .json.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/SurveyMonkey/lsps/tree/main/plugins/biome-lsp",
+  "license": "MIT",
+  "author": {
+    "name": "Brian Espinosa",
+    "email": "b@bje.co"
+  },
+  "keywords": ["biome", "lsp", "language-server", "lint", "format"]
+}

@@ -5,7 +5,7 @@ status: stable
 created: 2026-10-08
 owner: brianespinosa
 related_milestones: [1]
-related_adrs: [1]
+related_adrs: [1, 2]
 ---
 
 # RFC 001: One marketplace for the language server plugins
@@ -204,6 +204,8 @@ Phases 4 and 5 run after 6 when the private window matters more than the order.
   so each merge keeps CI green. The repository layout test moves for the same reason.
 - CodeQL ships in phase 6. Code scanning needs Advanced Security, which this private
   repository does not have and a public one gets free.
+- The labeler runs here as an `actions/labeler` workflow (`.github/workflows/labeler.yml`), not
+  as an enterprise ruleset, because this repository has no rulesets. One label for each plugin.
 - Follow-up: one `lib/` for every marketplace (a later RFC).
 
 ## Related
