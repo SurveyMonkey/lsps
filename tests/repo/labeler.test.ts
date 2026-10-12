@@ -48,6 +48,13 @@ it.each(plugins)('labels pull requests that change the %s plugin', (plugin) => {
   )
 })
 
+it('has no rule for a plugin that does not exist', () => {
+  const stale = [...rules(readFileSync(CONFIG, 'utf8')).keys()].filter(
+    (name) => !plugins.includes(name),
+  )
+  expect(stale, 'rules in .github/labeler.yml with no plugin directory').toEqual([])
+})
+
 it('gives every rule the full pattern for its own plugin', () => {
   for (const [plugin, glob] of rules(readFileSync(CONFIG, 'utf8'))) {
     expect(glob, `plugin:${plugin}`).toBe(expectedGlob(plugin))
