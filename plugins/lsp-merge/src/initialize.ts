@@ -1,7 +1,7 @@
 // The one `initialize` result that Claude Code sees, made from the result
 // of each child.
 //
-// Document sync is always full (ADR 006). Each `didChange` then carries the
+// Document sync is always full (ADR 002). Each `didChange` then carries the
 // whole text, and every child accepts a whole-text change, whatever sync
 // kind it asked for. So the proxy keeps no copy of any document.
 //
@@ -21,7 +21,7 @@ export const TEXT_DOCUMENT_SYNC = {
 
 /** Claude Code never pulls diagnostics. The proxy pulls from its children
  *  itself, and pushes the result, so it does not claim that it answers
- *  pulls (ADR 006). */
+ *  pulls (ADR 002). */
 const DROPPED = new Set(['textDocumentSync', 'diagnosticProvider'])
 
 /** The capabilities in one `initialize` result, or none. */

@@ -1,7 +1,7 @@
 // Which child servers see a file. Each child keeps its own
 // `extensionToLanguage` map from `lsp-merge.json`. The proxy's own
 // manifest claims a wide, fixed set of extensions, because Claude Code
-// reads that set before any repository file (ADR 006). So this file, not
+// reads that set before any repository file (ADR 002). So this file, not
 // Claude Code, decides which children see a file.
 
 /** The part of a child's config that routing reads. */

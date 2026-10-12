@@ -12,7 +12,7 @@
 //    exits without it, and lsp-merge still claims its extensions.
 // 3. Conflicts: another enabled plugin with a language server. Claude Code
 //    gives each extension to one server only, so that plugin can take
-//    extensions from lsp-merge (ADR 006). `claude plugin list --json` names
+//    extensions from lsp-merge (ADR 002). `claude plugin list --json` names
 //    the enabled plugins. `claude plugin details <id>` counts the language
 //    servers of each one. The hook never reads the plugin cache: that layout
 //    is not documented. If `details` cannot answer in time, the `*-lsp` name

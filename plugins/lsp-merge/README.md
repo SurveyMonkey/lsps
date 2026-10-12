@@ -5,7 +5,7 @@ One language server that runs several. Claude Code gives each file extension to 
 takes that one place, runs the servers you list, and merges their diagnostics. So a type checker
 and a linter both report on `.ts`.
 
-[ADR 006](../../docs/adr/006-lsp-merge-proxy.md) records the design and the probe results.
+[ADR 002](../../docs/adr/002-lsp-merge-proxy.md) records the design and the probe results.
 
 ## Config
 

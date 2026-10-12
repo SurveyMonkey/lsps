@@ -28,9 +28,9 @@ env:
 jobs:
   # THIS JOB NAME IS A CONTRACT. `plugin-validate` becomes a required check,
   # matched by exact string, once it has reported on main (issue #4). If you
-  # rename the job after that, the build does not
-  # fail. The required check simply never reports again, and every pull
-  # request waits forever. See the same note in ci.yml.
+  # rename the job after that, the build does not fail. The required check
+  # simply never reports again, and every pull request waits forever. See
+  # the same note in ci.yml.
   plugin-validate:
     name: plugin-validate
     # The 1 vCPU runner: this job is one npm install and a few manifest

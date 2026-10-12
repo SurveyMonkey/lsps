@@ -17,8 +17,8 @@
 
 The pre-commit hook runs the staged-only subset. CI runs everything (`ci.yml`, and
 `plugin-validate.yml`). The job names `vitest`, `vitest-floor`, `types`,
-`biome` and `plugin-validate` are the required checks on `main`, matched by exact string. Do not
-rename one.
+`biome` and `plugin-validate` will be the required checks on `main` once rulesets exist
+(issue #4), matched by exact string. CI blocks nothing until then. Do not rename one.
 
 ## Layout
 

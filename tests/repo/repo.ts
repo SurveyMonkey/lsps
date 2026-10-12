@@ -10,7 +10,7 @@ export const PLUGINS = path.join(ROOT, 'plugins')
 export const LIB = path.join(ROOT, 'lib')
 
 // Directories directly under `root` (PLUGINS by default) that carry a
-// manifest. This is ported from test_repo_layout.py's plugin_dirs(). A
+// manifest. A
 // directory without .claude-plugin/ is not a plugin. A directory whose
 // .claude-plugin entry exists, but is not itself a directory (a stray file
 // with that name), is not one either. `root` is a parameter, defaulted to

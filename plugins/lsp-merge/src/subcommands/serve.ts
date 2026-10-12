@@ -1,6 +1,6 @@
 // The lsp-merge proxy: the one language server that Claude Code starts,
 // which runs each child server from `.claude/lsp-merge.json` and joins them
-// (ADR 006).
+// (ADR 002).
 //
 // - A request about a file goes to the primary child for that file, and its
 //   response goes back. A request with no file goes to the first child.
@@ -14,7 +14,7 @@
 //   list with `publishDiagnostics`. A child that declares
 //   `diagnosticProvider` is pulled with `textDocument/diagnostic` after each
 //   `didOpen`, `didChange` and `didSave`, because Claude Code never pulls.
-//   TypeScript 7's server only answers pulls (ADR 006). The proxy answers a
+//   TypeScript 7's server only answers pulls (ADR 002). The proxy answers a
 //   child's `workspace/diagnostic/refresh` itself, and pulls each open file
 //   of that child again. A pull that the child cancels with
 //   `retriggerRequest` is sent again.
