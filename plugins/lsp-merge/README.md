@@ -41,9 +41,9 @@ Then disable every other language server plugin, and enable lsp-merge:
 ```json
 {
   "enabledPlugins": {
-    "lsp-merge@bje": true,
-    "typescript7-lsp@bje": false,
-    "biome-lsp@bje": false,
+    "lsp-merge@lsps": true,
+    "typescript7-lsp@lsps": false,
+    "biome-lsp@lsps": false,
     "typescript-lsp@claude-plugins-official": false
   }
 }
@@ -73,7 +73,8 @@ a file closes, lsp-merge drops its lists.
 - Each server's own requirements, for example `node_modules` installed.
 - Install through a marketplace (`/plugin marketplace add`), or load it in place with
   `claude --plugin-dir`. A local path install and a `command` source in copy mode drop the
-  plugin's `src/lib` link, and the hook then fails at import (`CLAUDE.md`, Plugin marketplace).
+  plugin's `src/lib` link, and the hook then fails at import
+  (`.claude/rules/type-ts.md`, Boundaries).
 
 ## Failure modes
 

@@ -13,7 +13,7 @@ starts.
 ```json
 {
   "enabledPlugins": {
-    "typescript7-lsp@bje": true,
+    "typescript7-lsp@lsps": true,
     "typescript-lsp@claude-plugins-official": false
   }
 }
