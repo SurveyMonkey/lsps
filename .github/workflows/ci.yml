@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 # THESE JOB NAMES ARE A CONTRACT: vitest, vitest-floor, types, and biome here,
-# plus plugin-validate in plugin-validate.yml once the first plugin lands,
+# plus plugin-validate in plugin-validate.yml,
 # are the required checks on main, matched by exact string. If you
 # rename one, the build does not fail. The required check simply never
 # reports again, and every pull request waits forever for something that

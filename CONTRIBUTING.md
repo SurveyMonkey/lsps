@@ -16,7 +16,7 @@
 | `claude plugin validate --strict <dir>` | The marketplace manifest, and each plugin directory. |
 
 The pre-commit hook runs the staged-only subset. CI runs everything (`ci.yml`, and
-`plugin-validate.yml` from the first plugin on). The job names `vitest`, `vitest-floor`, `types`,
+`plugin-validate.yml`). The job names `vitest`, `vitest-floor`, `types`,
 `biome` and `plugin-validate` are the required checks on `main`, matched by exact string. Do not
 rename one.
 

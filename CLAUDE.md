@@ -19,7 +19,7 @@ Claude Code plugin marketplace for language server plugins (`name: "lsps"`). Plu
 
 `pnpm test` (coverage at 100), `pnpm exec tsc -p tsconfig.json`, `pnpm exec biome ci .
 --error-on-warnings`, `claude plugin validate --strict` on the manifest and each plugin. CI job
-names `vitest`, `vitest-floor`, `types`, `biome` and `plugin-validate` (from the first plugin on)
+names `vitest`, `vitest-floor`, `types`, `biome` and `plugin-validate`
 are the required checks on `main`; never rename one. `CONTRIBUTING.md` has the setup.
 
 ## Releasing
